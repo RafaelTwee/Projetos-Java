@@ -113,7 +113,7 @@ public class Data {
     
     public static void main(String[] args) {
         try {
-            Data data = new Data(31, 4, 2000);
+            Data data = new Data(30, 4, 2000);
             System.out.println(data.imprimirData());
         }
         catch (Exception e) {
