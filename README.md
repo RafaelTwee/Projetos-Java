@@ -7,8 +7,5 @@ Programas criados durante as aulas de orientação a objetos no 6° período da 
   
   
 <p align=center>
-        <img src="https://user-images.githubusercontent.com/55721845/233658188-7acbfb86-33e7-4208-a070-1f59e7862508.png" width=30%>
+        <img src="https://user-images.githubusercontent.com/55721845/233658478-8f38771d-a10d-4f7b-9ff7-70da35234779.png" width=30%>
 </p>
-
-![download](https://user-images.githubusercontent.com/55721845/233658188-7acbfb86-33e7-4208-a070-1f59e7862508.png)
-
