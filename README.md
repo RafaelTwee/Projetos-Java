@@ -5,7 +5,7 @@ Programas criados durante as aulas de orientação a objetos no 6° período da 
 
 
 <center>
-        <img src="https://portal1.iff.edu.br/reitoria/diretorias-sistemicas/diretoria-de-comunicacao/assinatura-visual/png-horiz-bom-jesus.png/image_view_fullscreen" width=50%>
+        <img src="https://portal1.iff.edu.br/reitoria/diretorias-sistemicas/diretoria-de-comunicacao/assinatura-visual/png-horiz-bom-jesus.png" width=50%>
 </center>
 
 
