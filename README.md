@@ -1,7 +1,8 @@
 
 # Programação Orientada a Objetos
 
-Programas criados durante as aulas de orientação a objetos no 6° período da graduação de Engenharia da Computação (IFF - Campus Bom Jesus) 
+Programas criados durante as aulas de orientação a objetos no 6° período da graduação de Engenharia da Computação
+[IFF - Campus Bom Jesus] 
 
 
 <p align=center>
