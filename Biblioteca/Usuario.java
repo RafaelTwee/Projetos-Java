@@ -1,5 +1,9 @@
 
 public class Usuario {
+
+    public Livro livroEmprestado;
+    public Boolean possuiEmprest = false;
+
     private String cpf, nome;
 
     public String getCpf() {
@@ -9,8 +13,6 @@ public class Usuario {
     public String getNome() {
         return nome;
     }
-
-    public Boolean possuiEmprest;
 
     public Usuario(String nome, String cpf){
         this.nome = nome;
