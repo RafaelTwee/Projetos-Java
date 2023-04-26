@@ -6,7 +6,7 @@ public class Livro {
     private String titulo, editora, categoria, ISBN;
     private LocalDate dataDevolução;
     public Usuario usuarioResponsavel;
-    public Boolean emprestado, renovado = false;
+    public Boolean emprestado = false, renovado = false;
 
     public LocalDate getDataDevolução() {
         return dataDevolução;
@@ -33,6 +33,10 @@ public class Livro {
     }
 
     public static Boolean validarISBN(String isbn) {
+        String cadeiaVerif = "131313131313";
+        int somaProdutos = 0;
+        for (int i = 0; i <= isbn.length() - 2; i++)
+            somaProdutos += Character.getNumericValue(isbn.charAt(i)) * Character.getNumericValue(cadeiaVerif.charAt(i));
         if (isbn.length() != 13)
             return false;
         for (int i = 0; i <= 12; i++) {
@@ -40,18 +44,10 @@ public class Livro {
                 return false;
         }
         isbn = isbn.replace(".", "").replace("-", "");
-        if ((somaProdutos(isbn) + Character.getNumericValue(isbn.charAt(12))) % 10 == 0)
+        if ((somaProdutos + Character.getNumericValue(isbn.charAt(12))) % 10 == 0)
             return true;
         else
             return false;
-    }
-    
-    private static int somaProdutos(String isbn) {
-        String cadeiaVerif = "131313131313";
-        int somaProdutos = 0;
-        for (int i = 0; i <= isbn.length() - 2; i++)
-            somaProdutos += Character.getNumericValue(isbn.charAt(i)) * Character.getNumericValue(cadeiaVerif.charAt(i));
-        return somaProdutos;
     }
 
     public Livro(String titulo, String editora, String categoria, String ISBN) {

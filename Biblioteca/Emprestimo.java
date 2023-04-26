@@ -14,8 +14,16 @@ public class Emprestimo {
             usuario.possuiEmprest = true;
             livro.setDataDevolução(LocalDate.now().plusDays(7));
             usuario.livroEmprestado = livro;
+            System.out.println("Livro emprestado. Data para renovação/devolução: " + livro.getDataDevolução());
         }
-
-        System.out.println("Data para renovação/devolução: " + livro.getDataDevolução());
+    }
+    public static void renovar(Livro livro) {
+        if (livro.renovado) {
+            System.out.println("O livro não pode ser renovado novamente");
+        }
+        else {
+            livro.setDataDevolução(LocalDate.now().plusDays(7));
+            livro.renovado = true;
+        }
     }
 }
