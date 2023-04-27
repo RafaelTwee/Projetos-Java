@@ -1,8 +1,24 @@
 
 public class Usuario {
 
-    public Livro livroEmprestado;
-    public Boolean possuiEmprest = false;
+    private Livro livroEmprestado;
+    private Boolean possuiEmprest = false;
+
+    public Livro getLivroEmprestado() {
+        return livroEmprestado;
+    }
+
+    public void setLivroEmprestado(Livro livroEmprestado) {
+        this.livroEmprestado = livroEmprestado;
+    }
+
+    public Boolean getPossuiEmprest() {
+        return possuiEmprest;
+    }
+
+    public void setPossuiEmprest(Boolean possuiEmprest) {
+        this.possuiEmprest = possuiEmprest;
+    }
 
     private String cpf, nome;
 

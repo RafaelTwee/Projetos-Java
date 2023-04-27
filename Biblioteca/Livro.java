@@ -1,15 +1,39 @@
 import java.time.LocalDate;
 
 public class Livro {
-    private static int livrosCadastrados = 0;
 
+    private static int livrosCadastrados = 0;
     private String titulo, editora, categoria, ISBN;
     private LocalDate dataDevolução;
-    public Usuario usuarioResponsavel;
-    public Boolean emprestado = false, renovado = false;
+    private Usuario usuarioResponsavel;
+    private Boolean emprestado = false, renovado = false;
+
+    public Boolean getRenovado() {
+        return renovado;
+    }
+
+    public void setRenovado(Boolean renovado) {
+        this.renovado = renovado;
+    }
 
     public LocalDate getDataDevolução() {
         return dataDevolução;
+    }
+    
+    public Usuario getUsuarioResponsavel() {
+        return usuarioResponsavel;
+    }
+
+    public void setUsuarioResponsavel(Usuario usuarioResponsavel) {
+        this.usuarioResponsavel = usuarioResponsavel;
+    }
+
+    public Boolean getEmprestado() {
+        return emprestado;
+    }
+
+    public void setEmprestado(Boolean emprestado) {
+        this.emprestado = emprestado;
     }
 
     public void setDataDevolução(LocalDate dataDevolução) {
