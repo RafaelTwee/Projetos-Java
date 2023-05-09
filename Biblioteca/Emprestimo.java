@@ -10,10 +10,10 @@ public class Emprestimo {
             System.out.println("O usuário já possui um livro emprestado que será devolvido no dia: " + usuario.getLivroEmprestado().getDataDevolução());
         }
         else {
-            livro.setEmprestado(true);;
             usuario.setPossuiEmprest(true);
-            livro.setDataDevolução(LocalDate.now().plusDays(7));
             usuario.setLivroEmprestado(livro);
+            livro.setEmprestado(true);
+            livro.setDataDevolução(LocalDate.now().plusDays(7));
             System.out.println("Livro emprestado. Data para renovação/devolução: " + livro.getDataDevolução());
         }
     }
@@ -25,5 +25,14 @@ public class Emprestimo {
             livro.setDataDevolução(LocalDate.now().plusDays(7));
             livro.setRenovado(true);
         }
+    }
+    public static void devolver(Livro livro, Usuario usuario) {
+        if (livro.getEmprestado() && (livro == usuario.getLivroEmprestado())) {
+            usuario.setLivroEmprestado(null);
+            usuario.setPossuiEmprest(false);
+            livro.setEmprestado(false);
+            livro.setRenovado(false);
+        }
+
     }
 }
