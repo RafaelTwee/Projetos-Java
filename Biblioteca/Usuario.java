@@ -34,16 +34,17 @@ public class Usuario {
         this.nome = nome;
         try {
             if (validarCpf(cpf))
-            this.cpf = cpf;
-        else
-            throw new Exception("CPF inválido");
-        } catch (Exception e) {
+                this.cpf = cpf;
+            else
+                throw new Exception("CPF inválido");
+        }
+        catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     public static Boolean validarCpf(String cpf){
-        cpf = cpf.replace(".", "").replace("-", "");
+        cpf = cpf.replace(".", "").replace("-", "").trim();
         if (cpf.length() != 11)
             return false;
         for (int i = 0; i <= 10; i++) {

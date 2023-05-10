@@ -19,7 +19,7 @@ public class Emprestimo {
     }
     public static void renovar(Livro livro) {
         if (livro.getRenovado()) {
-            System.out.println("O livro não pode ser renovado novamente");
+            System.out.println("O livro não pode ser renovado novamente.");
         }
         else {
             livro.setDataDevolução(LocalDate.now().plusDays(7));
@@ -33,6 +33,8 @@ public class Emprestimo {
             livro.setEmprestado(false);
             livro.setRenovado(false);
         }
-
+        else {
+            System.out.println("O livro não pertence ao usuário.");
+        }
     }
 }

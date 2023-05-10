@@ -59,6 +59,7 @@ public class Livro {
     public static Boolean validarISBN(String isbn) {
         String cadeiaVerif = "131313131313";
         int somaProdutos = 0;
+        isbn = isbn.replace(".", "").replace("-", "");
         for (int i = 0; i <= isbn.length() - 2; i++)
             somaProdutos += Character.getNumericValue(isbn.charAt(i)) * Character.getNumericValue(cadeiaVerif.charAt(i));
         if (isbn.length() != 13)
@@ -67,7 +68,6 @@ public class Livro {
             if (Character.isLetter(Character.getNumericValue(isbn.charAt(i))))
                 return false;
         }
-        isbn = isbn.replace(".", "").replace("-", "");
         if ((somaProdutos + Character.getNumericValue(isbn.charAt(12))) % 10 == 0)
             return true;
         else
