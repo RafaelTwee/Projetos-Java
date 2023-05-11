@@ -9,9 +9,10 @@ public class App {
         ArrayList<Livro> livros = new ArrayList<Livro>();
         String op1, op2, op3;
         Scanner input = new Scanner(System.in);
+        int cont = 0;
         do {
             System.out.print("\033[H\033[2J");
-            System.out.println("Selecione a opção desejada:\n1 - Livros\n2 - Usuários\n3 - Emprestimos\n4 - Sair");
+            System.out.println("Menu inicial:\n1 - Livros\n2 - Usuários\n3 - Emprestimos\n4 - Sair");
             op1 = input.nextLine();
             paginainicial:
             switch (op1) {
@@ -61,43 +62,57 @@ public class App {
                     op3 = input.nextLine();
                     switch (op3) {
                         case "1":
+                            System.out.print("\033[H\033[2J");
                             System.out.println("Digite o nome do livro:");
                             String nomeBusca = input.nextLine();
+                            cont = 0;
                             for (Livro li : livros) {
-                                if (li.getTitulo().equalsIgnoreCase(nomeBusca.trim()))
+                                if (li.getTitulo().equalsIgnoreCase(nomeBusca.trim())) {
                                     System.out.println(li.getTitulo() + " - " + li.getCategoria() + " - " + li.getEditora() + " - " +li.getISBN());
+                                    cont++;
+                                }      
                             }
-                            System.out.println("Pressione enter para continuar.");
+                            System.out.println("A busca retornou "+cont+" resultado(s). Pressione enter para continuar.");
                             input.nextLine();
                             break;
                         case "2":
                             System.out.println("Digite o ISBN do livro: \n");
                             String isbnBusca = input.nextLine();
+                            cont = 0;
                             for (Livro li : livros) {
-                                if (li.getISBN().equals(isbnBusca.trim().replace(".", "").replace("-", "")))
+                                if (li.getISBN().equals(isbnBusca.trim().replace(".", "").replace("-", ""))) {
                                     System.out.println(li.getTitulo() + " - " + li.getCategoria() + " - " + li.getEditora() + " - " +li.getISBN());
+                                    cont++;
+                                }
                             }
-                            System.out.println("Pressione enter para continuar.");
+                            System.out.println("A busca retornou "+cont+" resultado(s). Pressione enter para continuar.");
                             input.nextLine();
                             break;
                         case "3":
-                            System.out.println("Digite a categoria de livros: ");
+                            System.out.println("Digite o nome da categoria: ");
                             String catBusca = input.nextLine();
+                            cont = 0;
                             for (Livro li : livros) {
-                                if (li.getCategoria().equalsIgnoreCase(catBusca.trim()))
+                                if (li.getCategoria().equalsIgnoreCase(catBusca.trim())) {
                                     System.out.println(li.getTitulo() + " - " + li.getCategoria() + " - " + li.getEditora() + " - " +li.getISBN());
+                                    cont++;
+                                }
                             }
-                            System.out.println("Pressione enter para continuar.");
+                            System.out.println("A busca retornou "+cont+" resultado(s). Pressione enter para continuar.");
                             input.nextLine();
                             break;
                         case "4":
-                            System.out.println("Digite a categoria de livros: ");
+                            System.out.println("Digite o nome da editora: ");
                             String ediBusca = input.nextLine();
+                            cont = 0;
                             for (Livro li : livros) {
-                                if (li.getEditora().equalsIgnoreCase(ediBusca.trim()))
+                                if (li.getEditora().equalsIgnoreCase(ediBusca.trim())) {
                                     System.out.println(li.getTitulo() + " - " + li.getCategoria() + " - " + li.getEditora() + " - " +li.getISBN());
+                                    cont++;
+                                }
+                                    
                             }
-                            System.out.println("Pressione enter para continuar.");
+                            System.out.println("A busca retornou "+cont+" resultado(s). Pressione enter para continuar.");
                             input.nextLine();
                             break;  
                         case "5":
@@ -146,12 +161,13 @@ public class App {
                         case "1":
                             System.out.println("Digite o nome do usuário: ");
                             String nomeBusca = input.nextLine();
+                            cont = 0;
                             for (Usuario us : usuarios) {
                                 if (us.getNome().toLowerCase().equals(nomeBusca.toLowerCase().trim()))
                                     System.out.println(us.getNome() + " - " + us.getCpf());
+                                    cont++;
                             }
-
-                            System.out.println("Pressione enter para continuar.");
+                            System.out.println("A busca retornou "+cont+" resultado(s). Pressione enter para continuar.");
                             input.nextLine();
                             break;
                         case "2":
@@ -216,31 +232,40 @@ public class App {
                             switch (op3) {
                                 case "1":                                    
                                     System.out.print("\033[H\033[2J");
-                                    System.out.println("Emprestimos atrasados.");
+                                    System.out.println("Emprestimos atrasados:");
+                                    cont = 0;
                                     for (Livro li : livros){
-                                        if (li.getEmprestado() && li.getDataDevolução().isBefore(LocalDate.now()))
+                                        if (li.getEmprestado() && li.getDataDevolução().isBefore(LocalDate.now())) {
                                             System.out.println("Usuário responsável: " + li.getUsuarioResponsavel().getNome() + " - Data de devolução: " + li.getDataDevolução() + " - Livro: " + li.getTitulo());
+                                            cont++;
+                                        }
                                     }
-                                    System.out.println("Pressione enter para continuar.");
+                                    System.out.println("Existe(m) "+cont+" emprestimo(s) atrasado(s). Pressione enter para continuar.");
                                     input.nextLine();
                                     break;
                                 case "2":
 
                                     System.out.print("\033[H\033[2J");
-                                    System.out.println("Emprestimos ativos.");
+                                    System.out.println("Emprestimos ativos:");
+                                    cont = 0;
                                     for (Livro li : livros){
-                                        if (li.getEmprestado() && li.getDataDevolução().isAfter(LocalDate.now()))
+                                        if (li.getEmprestado() && li.getDataDevolução().isAfter(LocalDate.now())) {
                                             System.out.println("Usuário responsável: " + li.getUsuarioResponsavel().getNome() + " - Data de devolução: " + li.getDataDevolução() + " - Livro: " + li.getTitulo());
+                                            cont++;
+                                        }
                                     }
-                                    System.out.println("Pressione enter para continuar.");
+                                    System.out.println("Existe(m) "+cont+" emprestimo(s) ativos(s). Pressione enter para continuar.");
                                     input.nextLine();
                                     break;
                                 case "3":
                                     System.out.print("\033[H\033[2J");
-                                    System.out.println("Emprestimos concluídos.");
-                                    for (String emp : Emprestimo.empretimosConcluidos)
+                                    System.out.println("Emprestimos concluídos:");
+                                    cont = 0;
+                                    for (String emp : Emprestimo.empretimosConcluidos){
                                         System.out.println(emp);
-                                    System.out.println("Pressione enter para continuar.");
+                                        cont++;
+                                    }
+                                    System.out.println("Existe(m) "+cont+" emprestimo(s) concluídos(s). Pressione enter para continuar.");
                                     input.nextLine();
                                     break;
                                 case "4":
