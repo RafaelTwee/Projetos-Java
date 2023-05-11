@@ -79,7 +79,7 @@ public class Livro {
         this.editora = editora;
         this.categoria = categoria;
         if (validarISBN(ISBN))
-            this.ISBN = ISBN;
+            this.ISBN = ISBN.replace(".", "").replace("-", "").trim();
         else
             throw new Exception("ISBN inválido\n");
 
