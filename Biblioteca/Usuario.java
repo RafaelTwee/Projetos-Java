@@ -1,6 +1,6 @@
 
 public class Usuario {
-
+    private static int UsuariosCadastrados = 0;
     private Livro livroEmprestado;
     private Boolean possuiEmprest = false;
 
@@ -30,17 +30,13 @@ public class Usuario {
         return nome;
     }
 
-    public Usuario(String nome, String cpf){
+    public Usuario(String nome, String cpf) throws Exception {
         this.nome = nome;
-        try {
-            if (validarCpf(cpf))
-                this.cpf = cpf;
-            else
-                throw new Exception("CPF inválido");
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        if (validarCpf(cpf))
+                this.cpf = cpf.replace(".", "").replace("-", "").trim();
+        else
+            throw new Exception("CPF inválido. ");
+        UsuariosCadastrados++;
     }
 
     public static Boolean validarCpf(String cpf){
@@ -76,6 +72,8 @@ public class Usuario {
             somaDigitos += Character.getNumericValue(cpf.charAt(i)) * (11 - i);
         return somaDigitos%11;
     }
-
+    public int getUsuariosCadastrados(){
+        return UsuariosCadastrados;
+    }
 }
 

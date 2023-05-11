@@ -74,19 +74,15 @@ public class Livro {
             return false;
     }
 
-    public Livro(String titulo, String editora, String categoria, String ISBN) {
+    public Livro(String titulo, String editora, String categoria, String ISBN) throws Exception {
         this.titulo = titulo;
         this.editora = editora;
         this.categoria = categoria;
-        try {
-            if (validarISBN(ISBN))
-                this.ISBN = ISBN;
-            else
-                throw new Exception("ISBN inválido");
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        if (validarISBN(ISBN))
+            this.ISBN = ISBN;
+        else
+            throw new Exception("ISBN inválido\n");
+
         Livro.livrosCadastrados++;
     }
     
