@@ -29,7 +29,7 @@ public class Quiz {
     }
 
     public void addQuestion(Question question) throws Exception {
-        if (questions.size() <= 10)
+        if (questions.size() < 10)
             questions.add(question);
         else
             throw new Exception("O quiz já possui 10 perguntas. ");

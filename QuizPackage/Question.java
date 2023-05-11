@@ -40,8 +40,7 @@ public class Question {
     public boolean checkRightAnswer(int number) {
         if (rightAnswer == number)
             return true;
-        else
-            return false;
+        return false;
     }
 
     public String getDescription() {
