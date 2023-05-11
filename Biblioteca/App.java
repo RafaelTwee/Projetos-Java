@@ -7,20 +7,20 @@ public class App {
     public static void main(String[] args) {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         ArrayList<Livro> livros = new ArrayList<Livro>();
-        String op1, op2, op3;
+        String op;
         Scanner input = new Scanner(System.in);
         int cont = 0;
         do {
             System.out.print("\033[H\033[2J");
             System.out.println("Menu inicial:\n1 - Livros\n2 - Usuários\n3 - Empréstimos\n4 - Sair");
-            op1 = input.nextLine();
+            op = input.nextLine();
             paginainicial:
-            switch (op1) {
+            switch (op) {
                 case "1":
                 System.out.print("\033[H\033[2J");
                 System.out.println("Selecione a opção desejada:\n1 - Cadastrar\n2 - Consultar\n3 - Voltar ao início");
-                op2 = input.nextLine();
-                switch (op2) {
+                op = input.nextLine();
+                switch (op) {
                     case "1":
                     System.out.print("\033[H\033[2J");
                     System.out.println("Digite o nome do livro: ");
@@ -59,8 +59,8 @@ public class App {
                     case "2":
                     System.out.print("\033[H\033[2J");
                     System.out.println("Deseja consultar pelo:\n1 - Nome\n2 - ISBN\n3 - Categoria\n4 - Editora\n5 - Voltar ao início");
-                    op3 = input.nextLine();
-                    switch (op3) {
+                    op = input.nextLine();
+                    switch (op) {
                         case "1":
                             System.out.print("\033[H\033[2J");
                             System.out.println("Digite o nome do livro:");
@@ -125,8 +125,8 @@ public class App {
                 case "2":
                 System.out.print("\033[H\033[2J");
                 System.out.println("Selecione a opção desejada:\n1 - Cadastrar\n2 - Consultar\n3 - Voltar ao início");
-                op2 = input.nextLine();
-                switch (op2) {
+                op = input.nextLine();
+                switch (op) {
                     case "1":
                         System.out.print("\033[H\033[2J");
                         System.out.println("Digite o nome do usuário: ");
@@ -156,8 +156,8 @@ public class App {
                     case "2":
                     System.out.print("\033[H\033[2J");
                     System.out.println("Deseja consultar pelo:\n1 - Nome\n2 - CPF\n3 - Voltar ao início");
-                    op3 = input.nextLine();
-                    switch (op3) {
+                    op = input.nextLine();
+                    switch (op) {
                         case "1":
                             System.out.println("Digite o nome do usuário: ");
                             String nomeBusca = input.nextLine();
@@ -194,8 +194,8 @@ public class App {
                 case "3":
                 System.out.print("\033[H\033[2J");
                 System.out.println("Você deseja:\n1 - Realizar Empréstimo\n2 - Consultar Empréstimos\n3 - Renovar\n4 - Devolver\n5 - Voltar ao início");
-                op2 = input.nextLine();
-                switch (op2) {
+                op = input.nextLine();
+                switch (op) {
                     case "1":
                         System.out.print("\033[H\033[2J");
                         System.out.println("Digite o CPF do usuário: ");
@@ -228,8 +228,8 @@ public class App {
                     case "2":
                         System.out.print("\033[H\033[2J");
                         System.out.println("Você deseja consultar empréstimos:\n1 - Atrasados\n2 - Ativos\n3 - Concluidos\n4 - Voltar ao início");
-                        op3 = input.nextLine();
-                            switch (op3) {
+                        op = input.nextLine();
+                            switch (op) {
                                 case "1":                                    
                                     System.out.print("\033[H\033[2J");
                                     System.out.println("Empréstimos atrasados:");
@@ -343,9 +343,9 @@ public class App {
                 default:
                 break;
             }
-        } while (!op1.equals("4"));
+        } while (!op.equals("4"));
         System.out.print("\033[H\033[2J");
-        System.out.println("Programa Finalizado");
+        System.out.println("Programa finalizado");
         input.close();
     }
 
