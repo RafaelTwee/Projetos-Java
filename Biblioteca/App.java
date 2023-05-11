@@ -184,7 +184,7 @@ public class App {
                             break paginainicial;
                         }
                         catch (Exception e) {
-                            System.out.println(e.getMessage() + ". Pressione enter para continuar.");
+                            System.out.println(e.getMessage() + "Pressione enter para continuar.");
                             input.nextLine();
                         }
                         break;
