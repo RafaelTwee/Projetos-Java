@@ -252,7 +252,7 @@ public class App {
                                         if (li.getEmprestado() && li.getDataDevolução().isAfter(LocalDate.now())) {
                                             System.out.println("Usuário responsável: " + li.getUsuarioResponsavel().getNome() + " - Data de devolução: " + li.getDataDevolução() + " - Livro: " + li.getTitulo());
                                             cont++;
-                                        }
+                                    }
                                     }
                                     System.out.println("Existe(m) "+cont+" emprestimo(s) ativos(s). Pressione enter para continuar.");
                                     input.nextLine();
