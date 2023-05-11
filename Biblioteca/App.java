@@ -12,7 +12,7 @@ public class App {
         int cont = 0;
         do {
             System.out.print("\033[H\033[2J");
-            System.out.println("Menu inicial:\n1 - Livros\n2 - Usuários\n3 - Emprestimos\n4 - Sair");
+            System.out.println("Menu inicial:\n1 - Livros\n2 - Usuários\n3 - Empréstimos\n4 - Sair");
             op1 = input.nextLine();
             paginainicial:
             switch (op1) {
@@ -193,7 +193,7 @@ public class App {
                 break;
                 case "3":
                 System.out.print("\033[H\033[2J");
-                System.out.println("Você deseja:\n1 - Realizar Emprestimo\n2 - Consultar Emprestimos\n3 - Renovar\n4 - Devolver\n5 - Voltar ao início");
+                System.out.println("Você deseja:\n1 - Realizar Empréstimo\n2 - Consultar Empréstimos\n3 - Renovar\n4 - Devolver\n5 - Voltar ao início");
                 op2 = input.nextLine();
                 switch (op2) {
                     case "1":
@@ -216,7 +216,7 @@ public class App {
                         }
                         try {
                             Emprestimo.realizarEmprestimo(l, u);
-                            System.out.println("Emprestimo realizado. Pressione enter para continuar.");
+                            System.out.println("Empréstimo realizado. Pressione enter para continuar.");
                             input.nextLine();
                             break paginainicial;
                         }
@@ -227,12 +227,12 @@ public class App {
                         break;
                     case "2":
                         System.out.print("\033[H\033[2J");
-                        System.out.println("Você deseja consultar emprestimos:\n1 - Atrasados\n2 - Ativos\n3 - Concluidos\n4 - Voltar ao início");
+                        System.out.println("Você deseja consultar empréstimos:\n1 - Atrasados\n2 - Ativos\n3 - Concluidos\n4 - Voltar ao início");
                         op3 = input.nextLine();
                             switch (op3) {
                                 case "1":                                    
                                     System.out.print("\033[H\033[2J");
-                                    System.out.println("Emprestimos atrasados:");
+                                    System.out.println("Empréstimos atrasados:");
                                     cont = 0;
                                     for (Livro li : livros){
                                         if (li.getEmprestado() && li.getDataDevolução().isBefore(LocalDate.now())) {
@@ -240,13 +240,13 @@ public class App {
                                             cont++;
                                         }
                                     }
-                                    System.out.println("Existe(m) "+cont+" emprestimo(s) atrasado(s). Pressione enter para continuar.");
+                                    System.out.println("Existe(m) "+cont+" empréstimo(s) atrasado(s). Pressione enter para continuar.");
                                     input.nextLine();
                                     break;
                                 case "2":
 
                                     System.out.print("\033[H\033[2J");
-                                    System.out.println("Emprestimos ativos:");
+                                    System.out.println("Empréstimos ativos:");
                                     cont = 0;
                                     for (Livro li : livros){
                                         if (li.getEmprestado() && li.getDataDevolução().isAfter(LocalDate.now())) {
@@ -254,18 +254,18 @@ public class App {
                                             cont++;
                                     }
                                     }
-                                    System.out.println("Existe(m) "+cont+" emprestimo(s) ativos(s). Pressione enter para continuar.");
+                                    System.out.println("Existe(m) "+cont+" empréstimo(s) ativos(s). Pressione enter para continuar.");
                                     input.nextLine();
                                     break;
                                 case "3":
                                     System.out.print("\033[H\033[2J");
-                                    System.out.println("Emprestimos concluídos:");
+                                    System.out.println("Empréstimos concluídos:");
                                     cont = 0;
                                     for (String emp : Emprestimo.empretimosConcluidos){
                                         System.out.println(emp);
                                         cont++;
                                     }
-                                    System.out.println("Existe(m) "+cont+" emprestimo(s) concluídos(s). Pressione enter para continuar.");
+                                    System.out.println("Existe(m) "+cont+" empréstimo(s) concluídos(s). Pressione enter para continuar.");
                                     input.nextLine();
                                     break;
                                 case "4":
