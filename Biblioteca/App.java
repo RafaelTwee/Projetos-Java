@@ -8,9 +8,6 @@ public class App {
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         ArrayList<Livro> livros = new ArrayList<Livro>();
         String op1, op2, op3;
-
-
-
         Scanner input = new Scanner(System.in);
         do {
             System.out.print("\033[H\033[2J");
@@ -20,7 +17,7 @@ public class App {
             switch (op1) {
                 case "1":
                 System.out.print("\033[H\033[2J");
-                System.out.println("Selecione a opção desejada:\n1 - Cadastrar\n2 - Consultar\n3 - Voltar");
+                System.out.println("Selecione a opção desejada:\n1 - Cadastrar\n2 - Consultar\n3 - Voltar ao início");
                 op2 = input.nextLine();
                 switch (op2) {
                     case "1":
@@ -35,10 +32,13 @@ public class App {
                     String isbn = input.nextLine();
                     for (Livro li : livros){
                         if (li.getISBN().equals(isbn.trim().replace(".", "").replace("-", ""))) {
-                            System.out.print("\033[H\033[2J");
-                            System.out.println("Esse ISBN já está cadastrado. Pressione enter para continuar.");
-                            input.nextLine();
-                            break paginainicial;
+                            if (li.getCategoria().equals(cat) && li.getEditora().equals(edit) && li.getTitulo().equals(nome)) {}
+                            else {
+                                System.out.print("\033[H\033[2J");
+                                System.out.println("Esse ISBN já está cadastrado com nome/categoria/editora diferente. Pressione enter para continuar.");
+                                input.nextLine();
+                                break paginainicial;
+                            }
                         }
                     }
                     
@@ -48,7 +48,8 @@ public class App {
                         System.out.println("Livro cadastrado. Pressione enter para continuar.");
                         input.nextLine();
                         break paginainicial;
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e) {
                         System.out.println(e.getMessage() + "Pressione enter para continuar.");
                         input.nextLine();
                     }
@@ -56,14 +57,14 @@ public class App {
 
                     case "2":
                     System.out.print("\033[H\033[2J");
-                    System.out.println("Deseja consultar pelo:\n1 - Nome\n2 - ISBN\n3 - Voltar");
+                    System.out.println("Deseja consultar pelo:\n1 - Nome\n2 - ISBN\n3 - Categoria\n4 - Editora\n5 - Voltar ao início");
                     op3 = input.nextLine();
                     switch (op3) {
                         case "1":
-                            System.out.println("Digite o nome do livro: ");
+                            System.out.println("Digite o nome do livro:");
                             String nomeBusca = input.nextLine();
                             for (Livro li : livros) {
-                                if (li.getTitulo().toLowerCase().equals(nomeBusca.toLowerCase().trim()))
+                                if (li.getTitulo().equalsIgnoreCase(nomeBusca.trim()))
                                     System.out.println(li.getTitulo() + " - " + li.getCategoria() + " - " + li.getEditora() + " - " +li.getISBN());
                             }
                             System.out.println("Pressione enter para continuar.");
@@ -80,6 +81,26 @@ public class App {
                             input.nextLine();
                             break;
                         case "3":
+                            System.out.println("Digite a categoria de livros: ");
+                            String catBusca = input.nextLine();
+                            for (Livro li : livros) {
+                                if (li.getCategoria().equalsIgnoreCase(catBusca.trim()))
+                                    System.out.println(li.getTitulo() + " - " + li.getCategoria() + " - " + li.getEditora() + " - " +li.getISBN());
+                            }
+                            System.out.println("Pressione enter para continuar.");
+                            input.nextLine();
+                            break;
+                        case "4":
+                            System.out.println("Digite a categoria de livros: ");
+                            String ediBusca = input.nextLine();
+                            for (Livro li : livros) {
+                                if (li.getEditora().equalsIgnoreCase(ediBusca.trim()))
+                                    System.out.println(li.getTitulo() + " - " + li.getCategoria() + " - " + li.getEditora() + " - " +li.getISBN());
+                            }
+                            System.out.println("Pressione enter para continuar.");
+                            input.nextLine();
+                            break;  
+                        case "5":
                             break;  
                         default:
                             break;
@@ -88,7 +109,7 @@ public class App {
                 break;
                 case "2":
                 System.out.print("\033[H\033[2J");
-                System.out.println("Selecione a opção desejada:\n1 - Cadastrar\n2 - Consultar\n3 - Voltar\n");
+                System.out.println("Selecione a opção desejada:\n1 - Cadastrar\n2 - Consultar\n3 - Voltar ao início");
                 op2 = input.nextLine();
                 switch (op2) {
                     case "1":
@@ -119,7 +140,7 @@ public class App {
                         break;
                     case "2":
                     System.out.print("\033[H\033[2J");
-                    System.out.println("Deseja consultar pelo:\n1 - Nome\n2 - CPF\n3 - Voltar");
+                    System.out.println("Deseja consultar pelo:\n1 - Nome\n2 - CPF\n3 - Voltar ao início");
                     op3 = input.nextLine();
                     switch (op3) {
                         case "1":
@@ -156,7 +177,7 @@ public class App {
                 break;
                 case "3":
                 System.out.print("\033[H\033[2J");
-                System.out.println("Você deseja:\n1 - Realizar Emprestimo\n2 - Consultar Emprestimos\n3 - Renovar\n4 - Devolver\n5 - Voltar");
+                System.out.println("Você deseja:\n1 - Realizar Emprestimo\n2 - Consultar Emprestimos\n3 - Renovar\n4 - Devolver\n5 - Voltar ao início");
                 op2 = input.nextLine();
                 switch (op2) {
                     case "1":
@@ -190,11 +211,12 @@ public class App {
                         break;
                     case "2":
                         System.out.print("\033[H\033[2J");
-                        System.out.println("Você deseja consultar emprestimos:\n1 - Atrasados\n2 - Ativos\n3 - Concluidos\n4 - Voltar");
+                        System.out.println("Você deseja consultar emprestimos:\n1 - Atrasados\n2 - Ativos\n3 - Concluidos\n4 - Voltar ao início");
                         op3 = input.nextLine();
                             switch (op3) {
-                                case "1":
+                                case "1":                                    
                                     System.out.print("\033[H\033[2J");
+                                    System.out.println("Emprestimos atrasados.");
                                     for (Livro li : livros){
                                         if (li.getEmprestado() && li.getDataDevolução().isBefore(LocalDate.now()))
                                             System.out.println("Usuário responsável: " + li.getUsuarioResponsavel().getNome() + " - Data de devolução: " + li.getDataDevolução() + " - Livro: " + li.getTitulo());
@@ -205,6 +227,7 @@ public class App {
                                 case "2":
 
                                     System.out.print("\033[H\033[2J");
+                                    System.out.println("Emprestimos ativos.");
                                     for (Livro li : livros){
                                         if (li.getEmprestado() && li.getDataDevolução().isAfter(LocalDate.now()))
                                             System.out.println("Usuário responsável: " + li.getUsuarioResponsavel().getNome() + " - Data de devolução: " + li.getDataDevolução() + " - Livro: " + li.getTitulo());
@@ -214,6 +237,7 @@ public class App {
                                     break;
                                 case "3":
                                     System.out.print("\033[H\033[2J");
+                                    System.out.println("Emprestimos concluídos.");
                                     for (String emp : Emprestimo.empretimosConcluidos)
                                         System.out.println(emp);
                                     System.out.println("Pressione enter para continuar.");
@@ -288,7 +312,8 @@ public class App {
                     default:
                         break;
                 }
-
+                break;
+                case "4":
                 break;
                 default:
                 break;
