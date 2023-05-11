@@ -81,7 +81,7 @@ public class App {
                             input.nextLine();
                             break;
                         case "3":
-                            System.out.println("Digite a categoria de livros: ");
+                            System.out.println("Digite o nome da categoria: ");
                             String catBusca = input.nextLine();
                             for (Livro li : livros) {
                                 if (li.getCategoria().equalsIgnoreCase(catBusca.trim()))
@@ -91,7 +91,7 @@ public class App {
                             input.nextLine();
                             break;
                         case "4":
-                            System.out.println("Digite a categoria de livros: ");
+                            System.out.println("Digite o nome da editora: ");
                             String ediBusca = input.nextLine();
                             for (Livro li : livros) {
                                 if (li.getEditora().equalsIgnoreCase(ediBusca.trim()))
