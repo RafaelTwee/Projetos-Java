@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import iff.poo.projetos.livro.Livro;
 import iff.poo.projetos.usuario.Usuario;
 
-public class Emprestiamo {
+public class Emprestimo {
     
     private Usuario usuarioResponsavel;
     private Livro livroEmprestado;
