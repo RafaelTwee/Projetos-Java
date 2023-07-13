@@ -12,6 +12,7 @@ public abstract class Emprestimo {
         }
         return null;
     }
+
     public static Livro encontrarLivro(String isbn, ArrayList<Livro> listali){
         for (Livro li : listali) {
             if (li.getISBN().equals(isbn))
@@ -19,6 +20,7 @@ public abstract class Emprestimo {
         }
         return null;
     }
+    
     public static void realizarEmprestimo(Livro livro, Usuario usuario) throws Exception {
         if (livro.getEmprestado())
             throw new Exception("O livro já foi emprestado e será devolvido no dia: " + livro.getDataDevolução() + ". ");
