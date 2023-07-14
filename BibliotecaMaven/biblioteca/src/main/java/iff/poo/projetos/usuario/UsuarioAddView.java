@@ -10,7 +10,6 @@ public class UsuarioAddView {
 	public static void main(String[] args) {
 		
 		UsuarioController uc = new UsuarioController();
-		UsuarioDAO udao = new UsuarioDAO();
 		
 		JFrame frame = new JFrame("Inserir usuario");
 		frame.setLayout(null);
@@ -48,8 +47,6 @@ public class UsuarioAddView {
 		frame.add(btn);
 		
 		frame.setVisible(true);
-
-		System.out.println(udao.selecionarPorCpf("15805444798").getNome());
 	}
 
 }

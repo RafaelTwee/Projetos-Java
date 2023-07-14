@@ -5,21 +5,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import iff.poo.projetos.Conexao;
+
 public class UsuarioDAO {
-	private Connection connection;
+	private Connection connection = Conexao.getConn();
 	private String INSERIR = "INSERT INTO Usuarios (Nome, CPF) values (?, ?)";
 	private String REMOVER = "DELETE FROM Usuarios WHERE CPF = ?";
 	private String SELECIONAR = "SELECT * FROM Usuarios WHERE CPF = ?";
 	private String SELECIONAR_TODOS = "SELECT * FROM Usuarios";
-
-	public UsuarioDAO(){
-		try {
-			connection = DriverManager.getConnection("jdbc:sqlite:db-biblioteca.db");
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public void inserir(Usuario usuario){
 		try {

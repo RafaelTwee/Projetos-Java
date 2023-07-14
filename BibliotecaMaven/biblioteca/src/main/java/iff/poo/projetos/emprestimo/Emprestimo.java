@@ -9,7 +9,7 @@ public class Emprestimo {
     
     private Usuario usuarioResponsavel;
     private Livro livroEmprestado;
-    private LocalDate dataInicio, dataFinal, dataDevolução;
+    private LocalDate dataInicio, dataFinal, dataDevolucao;
     private Boolean renovado = Boolean.FALSE;
 
     public Emprestimo(Usuario usuarioResponsavel, Livro livroEmprestado, LocalDate dataInicio, LocalDate dataFinal) {
@@ -43,11 +43,11 @@ public class Emprestimo {
     public void setDataFinal(LocalDate dataFinal) {
         this.dataFinal = dataFinal;
     }
-    public LocalDate getDataDevolução() {
-        return dataDevolução;
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
     }
-    public void setDataDevolução(LocalDate dataDevolução) {
-        this.dataDevolução = dataDevolução;
+    public void setDataDevolucao(LocalDate dataDevolução) {
+        this.dataDevolucao = dataDevolução;
     }
     public Boolean getRenovado() {
         return renovado;

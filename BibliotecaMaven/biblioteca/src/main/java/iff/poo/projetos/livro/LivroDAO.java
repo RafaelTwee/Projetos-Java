@@ -5,26 +5,19 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import iff.poo.projetos.Conexao;
+
 public class LivroDAO {
-	private Connection connection;
+	private Connection connection = Conexao.getConn();
 	private String INSERIR = "INSERT INTO Livros (Titulo, ISBN) values (?, ?)";
 	
 	private String REMOVER_ISBN = "DELETE FROM Livros WHERE ISBN = ?";
 	private String REMOVER_ID = "DELETE FROM Livros WHERE id = ?";
 	
-	private String SELECIONAR_ISBN = "SELECT * FROM Livros WHERE ISBN = ?";
+	private String SELECIONAR_ISBN = "SELECT * FROM Livros WHERE ISBN = ?;";
 	private String SELECIONAR_ID = "SELECT * FROM Livros WHERE id = ?";
-
+	private String SELECIONAR_DISPONIVEIS = "SELECT * FROM Livros WHERE id NOT IN (SELECT id_Livro FROM Emprestimos WHERE Data_Entrega IS NULL) AND ISBN = ?";
 	private String SELECIONAR_TODOS = "SELECT * FROM Livros";
-
-	public LivroDAO(){
-		try {
-			connection = DriverManager.getConnection("jdbc:sqlite:db-biblioteca.db");
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public void inserir(Livro livro){
 		try {
@@ -80,6 +73,24 @@ public class LivroDAO {
 		List<Livro> livros = new ArrayList<>();
 		try {
 			PreparedStatement ps = connection.prepareStatement(SELECIONAR_ISBN);
+			ps.setString(1, isbn);
+			ResultSet result = ps.executeQuery();
+			while (result.next()) {
+				Livro livro = new Livro(result.getString("Titulo"), result.getString("ISBN"));
+				livro.setId(result.getInt("id"));
+				livros.add(livro);
+			}
+			return livros;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return livros;
+	}
+
+	public List<Livro> selecionarDisponiveis(String isbn){
+		List<Livro> livros = new ArrayList<>();
+		try {
+			PreparedStatement ps = connection.prepareStatement(SELECIONAR_DISPONIVEIS);
 			ps.setString(1, isbn);
 			ResultSet result = ps.executeQuery();
 			while (result.next()) {
