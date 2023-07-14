@@ -6,7 +6,7 @@ import iff.poo.projetos.livro.Livro;
 import iff.poo.projetos.usuario.Usuario;
 
 public class Emprestimo {
-    
+    private int id;
     private Usuario usuarioResponsavel;
     private Livro livroEmprestado;
     private LocalDate dataInicio, dataFinal, dataDevolucao;

@@ -20,8 +20,11 @@ public class EmprestimoDAO {
 	private String INSERIR = "INSERT INTO Emprestimos (CPF, id_Livro, Data_Inicial, Data_Final, Renovado) values (?, ?, ?, ?, ?)";
 
     private String UPDATE_ENTREGA = "UPDATE Emprestimos SET Data_Entrega = ? WHERE CPF = ? AND Data_Entrega IS NULL";
-	private String UPDATE_RENOVADO = "UPDATE Emprestimos SET Renovado = ?, Data_Entrega = ? WHERE CPF = ? AND Data_Entrega IS NULL";
+	private String UPDATE_RENOVADO = "UPDATE Emprestimos SET Renovado = ?, Data_Final = ? WHERE CPF = ? AND Data_Entrega IS NULL";
     
+	private String UPDATE_ID_EMPRESTIMO_USUARIO = "";
+	private String UPDATE_ID_EMPRESTIMO_LIVRO = "";
+
 	private String REMOVER = "DELETE FROM Emprestimos WHERE id = ?";
 
 	private String SELECIONAR_ATIVO = "SELECT * FROM Emprestimos WHERE CPF = ? AND Data_Entrega IS NULL";
