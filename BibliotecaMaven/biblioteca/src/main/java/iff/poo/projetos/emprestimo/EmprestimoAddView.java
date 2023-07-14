@@ -31,7 +31,7 @@ public class EmprestimoAddView {
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					
+					ec.realizarEmprestimo("11111111111", "0000000000000");
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(frame, e1.getMessage());
 				}

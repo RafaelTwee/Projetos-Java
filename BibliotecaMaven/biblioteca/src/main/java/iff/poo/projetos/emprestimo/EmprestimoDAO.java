@@ -22,8 +22,8 @@ public class EmprestimoDAO {
     private String UPDATE_ENTREGA = "UPDATE Emprestimos SET Data_Entrega = ? WHERE CPF = ? AND Data_Entrega IS NULL";
 	private String UPDATE_RENOVADO = "UPDATE Emprestimos SET Renovado = ?, Data_Final = ? WHERE CPF = ? AND Data_Entrega IS NULL";
     
-	private String UPDATE_ID_EMPRESTIMO_USUARIO = "";
-	private String UPDATE_ID_EMPRESTIMO_LIVRO = "";
+	private String UPDATE_ID_EMPRESTIMO_USUARIO = "UPDATE Usuarios SET id_Emprestimo = ? WHERE CPF = ?";
+	private String UPDATE_ID_EMPRESTIMO_LIVRO = "UPDATE Livros SET id_Emprestimo = ? WHERE id = ?";
 
 	private String REMOVER = "DELETE FROM Emprestimos WHERE id = ?";
 
@@ -40,6 +40,16 @@ public class EmprestimoDAO {
             ps.setString(3, LocalDate.now().toString());
 			ps.setString(4, LocalDate.now().plusDays(7).toString());
 			ps.setBoolean(5, Boolean.FALSE);
+			ps.execute();
+
+			ps = connection.prepareStatement(UPDATE_ID_EMPRESTIMO_USUARIO);
+			ps.setInt(1, selecionarAtivo(usuario.getCpf()).getId());
+			ps.setString(2, usuario.getCpf());
+			ps.execute();
+			
+			ps = connection.prepareStatement(UPDATE_ID_EMPRESTIMO_LIVRO);
+			ps.setInt(1, selecionarAtivo(usuario.getCpf()).getId());
+			ps.setInt(2, livro.getId());
 			ps.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -90,6 +100,7 @@ public class EmprestimoDAO {
 				Emprestimo emprestimo = new Emprestimo(usuarioDAO.selecionarPorCpf(result.getString("CPF")), livroDAO.selecionarPorId(result.getInt("id_Livro")), LocalDate.parse(result.getString("Data_Inicial")), LocalDate.parse(result.getString("Data_Final")));
 				emprestimo.setDataDevolucao(LocalDate.parse(result.getString("Data_Inicial")));
 				emprestimo.setRenovado(result.getBoolean("Renovado"));
+				emprestimo.setId(result.getInt("id"));
 				emprestimos.add(emprestimo);
 			}
 
@@ -109,6 +120,7 @@ public class EmprestimoDAO {
 				Emprestimo emprestimo = new Emprestimo(usuarioDAO.selecionarPorCpf(result.getString("CPF")), livroDAO.selecionarPorId(result.getInt("id_Livro")), LocalDate.parse(result.getString("Data_Inicial")), LocalDate.parse(result.getString("Data_Final")));
 				emprestimo.setDataDevolucao(LocalDate.parse(result.getString("Data_Inicial")));
 				emprestimo.setRenovado(result.getBoolean("Renovado"));
+				emprestimo.setId(result.getInt("id"));
 				emprestimos.add(emprestimo);
 			}
 			return emprestimos;
@@ -128,6 +140,7 @@ public class EmprestimoDAO {
 				emprestimo = new Emprestimo(usuarioDAO.selecionarPorCpf(result.getString("CPF")), livroDAO.selecionarPorId(result.getInt("id_Livro")), LocalDate.parse(result.getString("Data_Inicial")), LocalDate.parse(result.getString("Data_Final")));
 				emprestimo.setDataDevolucao(LocalDate.parse(result.getString("Data_Inicial")));
 				emprestimo.setRenovado(result.getBoolean("Renovado"));
+				emprestimo.setId(result.getInt("id"));
 				return emprestimo;
 			}
 			return null;
