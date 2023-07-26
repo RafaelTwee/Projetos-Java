@@ -1,7 +1,10 @@
-package iff.poo.projetos.livro;
+package iff.poo.projetos.controller;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import iff.poo.projetos.dao.LivroDAO;
+import iff.poo.projetos.model.Livro;
 
 public class LivroController {
 
@@ -26,17 +29,15 @@ public class LivroController {
     }
 	
 	public void inserir(Livro livro) throws Exception {
-		if (livroDAO.selecionarPorIsbn(livro.getIsbn()).isEmpty()) {
-			if (validarISBN(livro.getIsbn())) {
-				livroDAO.inserir(livro);
-			}
-			else {
-				throw new Exception("O ISBN não é válido");
-			}
-		}
-		else {
-			throw new Exception("O ISBN já está cadastrado");
-		}
+		if (!livroDAO.selecionarPorIsbn(livro.getIsbn()).isEmpty()) {
+            if (!livroDAO.selecionarPorIsbn(livro.getIsbn()).get(0).getTitulo().equals(livro.getTitulo())) {
+                throw new Exception("O ISBN já está cadastrado com outros dados");
+            }
+        }
+        if (!validarISBN(livro.getIsbn())) {
+            throw new Exception("O ISBN não é válido");
+        }
+		livroDAO.inserir(livro);
 	}
 
     public void removerPorIsbn(String isbn) {

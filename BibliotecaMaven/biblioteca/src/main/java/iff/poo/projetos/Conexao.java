@@ -3,7 +3,7 @@ package iff.poo.projetos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/*conexão única para os tres DAOs*/
 public class Conexao {
 	private static Connection c = null;
 	public static Connection getConn() {

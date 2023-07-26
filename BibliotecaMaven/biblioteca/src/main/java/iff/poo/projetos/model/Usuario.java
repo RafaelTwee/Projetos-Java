@@ -1,4 +1,4 @@
-package iff.poo.projetos.usuario;
+package iff.poo.projetos.model;
 
 public class Usuario {
     private String cpf, nome;

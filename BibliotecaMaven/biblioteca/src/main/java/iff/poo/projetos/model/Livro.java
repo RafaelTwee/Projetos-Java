@@ -1,4 +1,4 @@
-package iff.poo.projetos.livro;
+package iff.poo.projetos.model;
 
 public class Livro {
 	private String isbn, titulo, editora, categoria;

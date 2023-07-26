@@ -1,4 +1,7 @@
-package iff.poo.projetos.usuario;
+package iff.poo.projetos.controller;
+
+import iff.poo.projetos.dao.UsuarioDAO;
+import iff.poo.projetos.model.Usuario;
 
 public class UsuarioController {
 
@@ -46,17 +49,13 @@ public class UsuarioController {
     
     public void inserir(Usuario usuario) throws Exception {
         
-        if (usuarioDAO.selecionarPorCpf(usuario.getCpf()) == null) {
-            if (validarCpf(usuario.getCpf())) {
-                usuarioDAO.inserir(usuario);
-            }
-            else {
-                throw new Exception("O CPF não é válido");
-            }
-        }
-        else {
+        if (usuarioDAO.selecionarPorCpf(usuario.getCpf()) != null) {
             throw new Exception("O CPF já está cadastrado");
         }
+        if (!validarCpf(usuario.getCpf())) {
+            throw new Exception("O CPF não é válido");
+        }
+        usuarioDAO.inserir(usuario);
     }
 
     public void removerPorCpf(String cpf) throws Exception {

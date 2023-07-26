@@ -1,11 +1,9 @@
-package iff.poo.projetos.emprestimo;
+package iff.poo.projetos.model;
 
 import java.time.LocalDate;
 
-import iff.poo.projetos.livro.Livro;
-import iff.poo.projetos.usuario.Usuario;
-
 public class Emprestimo {
+
     private int id;
     private Usuario usuarioResponsavel;
     private Livro livroEmprestado;

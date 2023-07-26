@@ -1,4 +1,4 @@
-package iff.poo.projetos.usuario;
+package iff.poo.projetos.dao;
 
 import java.sql.*;
 
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import iff.poo.projetos.Conexao;
+import iff.poo.projetos.model.Usuario;
 
 public class UsuarioDAO {
 	private Connection connection = Conexao.getConn();

@@ -1,4 +1,4 @@
-package iff.poo.projetos.emprestimo;
+package iff.poo.projetos.dao;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -6,10 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import iff.poo.projetos.Conexao;
-import iff.poo.projetos.livro.Livro;
-import iff.poo.projetos.livro.LivroDAO;
-import iff.poo.projetos.usuario.Usuario;
-import iff.poo.projetos.usuario.UsuarioDAO;
+import iff.poo.projetos.model.Emprestimo;
+import iff.poo.projetos.model.Livro;
+import iff.poo.projetos.model.Usuario;
 
 public class EmprestimoDAO {
 	private LivroDAO livroDAO = new LivroDAO();
@@ -126,6 +125,28 @@ public class EmprestimoDAO {
 			return emprestimos;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		return emprestimos;
+	}
+
+	public List<Emprestimo> selecionarConcluidos() {
+		List<Emprestimo> emprestimos = getAll();
+		for (Emprestimo em : emprestimos) {
+			if (em.getDataDevolucao() == null){
+				continue;
+			}
+			emprestimos.add(em);
+		}
+		return emprestimos;
+	}
+
+	public List<Emprestimo> selecionarAtrasados() {
+		List<Emprestimo> emprestimos = getAll();
+		for (Emprestimo em : emprestimos) {
+			if (!em.getDataFinal().isBefore(LocalDate.now())){
+				continue;
+			}
+			emprestimos.add(em);
 		}
 		return emprestimos;
 	}
